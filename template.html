@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Programming languages TLDs</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./main.css" />
+		<script src="https://unpkg.com/petite-vue" defer init></script>
+	</head>
+	<body>
+		<header></header>
+		<main>
+			<h1>Programming languages TLDs</h1>
+			<div
+				class="container"
+				v-scope="{search: '', languages: {langTlds}}"
+			>
+				<label class="searchbox">
+					Search Language
+					<input
+						type="text"
+						v-model="search"
+						placeholder="ex: python"
+					/>
+				</label>
+				<table>
+					<thead>
+						<tr>
+							<th>Language</th>
+							<th>TLD</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							v-for="([language, tld], index) in languages.filter(([language, tld]) => language.toLowerCase().includes(search.toLowerCase()))"
+						>
+							<td>{{ language }}</td>
+							<td>{{ tld }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</main>
+		<footer>
+			Sources:
+			<a
+				href="https://gist.github.com/ppisarczyk/43962d06686722d26d176fad46879d41"
+				target="_blank"
+				rel="noreferrer"
+				>Programming Languages extensions</a
+			>
+			and
+			<a
+				href="https://github.com/datasets/top-level-domain-names/blob/master/top-level-domain-names.csv"
+				target="_blank"
+				rel="noreferrer"
+				>List of all TLDs</a
+			>
+		</footer>
+	</body>
+</html>
